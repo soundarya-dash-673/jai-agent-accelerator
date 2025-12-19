@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  agent:
+    build:
+      context: ./apps/agent
+      dockerfile: Dockerfile
+    ports:
+      - "8123:8123"
+    environment:
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - LANGCHAIN_TRACING_V2=${LANGCHAIN_TRACING_V2:-false}
+      - LANGCHAIN_API_KEY=${LANGCHAIN_API_KEY:-}
+      - LANGCHAIN_PROJECT=preprod-agent
+    volumes:
+      - ./apps/agent/src:/app/src:ro
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8123/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  web:
+    build:
+      context: ./apps/web
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - agent
+    environment:
+      - VITE_API_URL=http://agent:8123
+
+  # Optional: LangGraph Studio for debugging
+  # Uncomment to use:
+  # studio:
+  #   image: langchain/langgraph-studio:latest
+  #   ports:
+  #     - "8124:8124"
+  #   volumes:
+  #     - ./apps/agent:/app
+  #   environment:
+  #     - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}

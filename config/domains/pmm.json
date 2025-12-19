@@ -1,0 +1,90 @@
+{
+  "domain_name": "Product Marketing Manager",
+  "domain_code": "pmm",
+  "tagline": "Turn market chaos into messaging clarity",
+  "target_audience": [
+    "Product Marketing Managers",
+    "Product Managers with PMM responsibilities",
+    "Designers doing positioning work",
+    "Founders doing their own marketing"
+  ],
+  "expertise_areas": {
+    "positioning": {
+      "description": "Define how your product is different and better",
+      "tools": ["analyze_product", "extract_value_props", "research_competitors"],
+      "outputs": ["Positioning statement", "Competitive matrix", "Differentiation map"]
+    },
+    "messaging": {
+      "description": "Craft compelling messaging frameworks",
+      "tools": ["create_messaging_matrix", "audit_messaging", "test_messaging"],
+      "outputs": ["Messaging hierarchy", "Value propositions", "Proof points"]
+    },
+    "competitive_intel": {
+      "description": "Deep competitive analysis and monitoring",
+      "tools": ["search_competitors", "analyze_pricing", "track_launches"],
+      "outputs": ["Battlecards", "Competitive briefs", "Win/loss analysis"]
+    },
+    "gtm": {
+      "description": "Go-to-market strategy and launch planning",
+      "tools": ["create_launch_plan", "identify_channels", "build_timeline"],
+      "outputs": ["Launch checklist", "Channel strategy", "Rollout plan"]
+    }
+  },
+  "subagents": [
+    {
+      "name": "competitive-analyst",
+      "description": "Specialist in competitive research and battlecard creation",
+      "tools": ["search_competitors", "analyze_pricing", "fetch_url"],
+      "personality": "Thorough researcher who surfaces insights competitors don't want you to know"
+    },
+    {
+      "name": "messaging-specialist",
+      "description": "Expert in messaging frameworks and value proposition development",
+      "tools": ["create_messaging_matrix", "audit_messaging", "test_messaging"],
+      "personality": "Clarity-obsessed writer who turns features into benefits"
+    },
+    {
+      "name": "launch-coordinator",
+      "description": "GTM planning and cross-functional launch coordination",
+      "tools": ["create_launch_plan", "build_timeline", "create_checklist"],
+      "personality": "Detail-oriented planner who surfaces risks before launch day"
+    }
+  ],
+  "quick_actions": [
+    {
+      "id": "competitive",
+      "label": "Competitive Analysis",
+      "prompt": "Help me analyze the competitive landscape for my product",
+      "icon": "Crosshair"
+    },
+    {
+      "id": "positioning",
+      "label": "Positioning Statement",
+      "prompt": "Help me create a positioning statement for my product",
+      "icon": "Target"
+    },
+    {
+      "id": "messaging",
+      "label": "Messaging Matrix",
+      "prompt": "Help me build a messaging matrix with value props and proof points",
+      "icon": "MessageSquare"
+    },
+    {
+      "id": "launch",
+      "label": "Launch Plan",
+      "prompt": "Help me create a go-to-market launch plan",
+      "icon": "Rocket"
+    },
+    {
+      "id": "battlecard",
+      "label": "Battlecard",
+      "prompt": "Help me create a competitive battlecard",
+      "icon": "Swords"
+    }
+  ],
+  "human_in_the_loop_tools": [
+    "create_positioning_statement",
+    "create_messaging_matrix",
+    "create_launch_plan"
+  ]
+}

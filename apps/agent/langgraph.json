@@ -1,0 +1,16 @@
+{
+  "$schema": "https://langchain-ai.github.io/langgraph/schemas/langgraph.json",
+  "graphs": {
+    "preprod": {
+      "path": "./src/preprod_agent/agent.py:agent",
+      "config": {
+        "configurable": {
+          "thread_id": "preprod-session"
+        }
+      }
+    }
+  },
+  "env": ".env",
+  "dependencies": ["."],
+  "python_version": "3.11"
+}
