@@ -40,6 +40,8 @@ def analyze_product(
     Returns:
         Structured analysis of the product with identified gaps
     """
+    materials_section = f"Reviewed: {existing_materials[:200]}..." if existing_materials else "No existing materials provided - starting fresh."
+    
     analysis = f"""
 ## Product Analysis
 
@@ -67,7 +69,7 @@ def analyze_product(
 3. Use `search_competitors` to understand competitive context
 
 ### Existing Materials Analysis
-{f"Reviewed: {existing_materials[:200]}..." if existing_materials else "No existing materials provided - starting fresh."}
+{materials_section}
 """
     return analysis
 
@@ -146,6 +148,9 @@ def identify_icp(
     Returns:
         Structured ICP definition with targeting criteria
     """
+    default_exclusions = "- Companies too small to need this\n- Teams without the pain point\n- Orgs with conflicting technology"
+    anti_icp = excluded_segments if excluded_segments else default_exclusions
+    
     return f"""
 ## Ideal Customer Profile (ICP) Definition
 
@@ -171,7 +176,7 @@ def identify_icp(
 - [Change in circumstances]
 
 ### Anti-ICP (Who We're NOT For)
-{excluded_segments if excluded_segments else "- Companies too small to need this\n- Teams without the pain point\n- Orgs with conflicting technology"}
+{anti_icp}
 
 ### Current Customer Signals
 {current_customers if current_customers else "No current customer data provided. Consider customer interviews or survey data."}

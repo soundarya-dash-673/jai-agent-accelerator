@@ -72,7 +72,7 @@ def create_pmm_agent(
     agent = create_react_agent(
         model=llm,
         tools=tools,
-        state_modifier=MAIN_SYSTEM_PROMPT,
+        prompt=MAIN_SYSTEM_PROMPT,
     )
 
     return agent
@@ -84,7 +84,7 @@ def create_competitive_analyst():
     return create_react_agent(
         model=llm,
         tools=RESEARCH_TOOLS,
-        state_modifier=COMPETITIVE_ANALYST_PROMPT,
+        prompt=COMPETITIVE_ANALYST_PROMPT,
     )
 
 
@@ -94,7 +94,7 @@ def create_messaging_specialist():
     return create_react_agent(
         model=llm,
         tools=PLANNING_TOOLS,
-        state_modifier=MESSAGING_SPECIALIST_PROMPT,
+        prompt=MESSAGING_SPECIALIST_PROMPT,
     )
 
 
@@ -104,7 +104,7 @@ def create_launch_coordinator():
     return create_react_agent(
         model=llm,
         tools=PLANNING_TOOLS + RISK_TOOLS,
-        state_modifier=LAUNCH_COORDINATOR_PROMPT,
+        prompt=LAUNCH_COORDINATOR_PROMPT,
     )
 
 

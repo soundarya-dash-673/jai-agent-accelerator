@@ -2,7 +2,7 @@
 name = "preprod-agent"
 version = "0.1.0"
 description = "Pre-Production Planning Deep Agent - Turn chaos into checklists"
-readme = "README.md"
+readme = "../../README.md"
 requires-python = ">=3.11"
 dependencies = [
     "langgraph>=0.2.0",
