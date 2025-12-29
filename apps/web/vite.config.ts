@@ -8,7 +8,7 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [react()],
     server: {
-      port: 3000,
+      // port: 3000,
       proxy: {
         '/api': {
           // Use env var, fallback to localhost
