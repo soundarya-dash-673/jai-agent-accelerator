@@ -21,13 +21,21 @@ from .tools import ALL_TOOLS
 
 app = FastAPI(title="PMM Deep Agent", version="0.1.0")
 
-# CORS for local dev
+# CORS - Allow your Netlify domain and localhost
+ALLOWED_ORIGINS = [
+    "https://prismatic-buttercream-f3b7fd.netlify.app",
+    "http://localhost:3000",
+    "http://localhost:5173",
+    "*"  # Allow all as fallback
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=ALLOWED_ORIGINS,
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST", "DELETE", "OPTIONS"],
     allow_headers=["*"],
+    expose_headers=["*"],
 )
 
 # Initialize model with tools
@@ -158,6 +166,9 @@ async def chat_stream(request: ChatRequest):
         headers={
             "Cache-Control": "no-cache",
             "Connection": "keep-alive",
+            "Access-Control-Allow-Origin": "*",  # Explicitly set for streaming
+            "Access-Control-Allow-Methods": "POST, OPTIONS",
+            "Access-Control-Allow-Headers": "*",
         }
     )
 
