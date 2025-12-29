@@ -14,6 +14,7 @@ COPY src/ ./src/
 
 # Install dependencies as root
 RUN pip install --no-cache-dir --upgrade pip && \
+ pip install --no-cache-dir "uvicorn[standard]" && \
     pip install --no-cache-dir -e .
 
 # Create non-root user
