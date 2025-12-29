@@ -1,0 +1,19 @@
+cat > apps/agent/.dockerignore << 'EOF'
+.venv
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache
+.coverage
+htmlcov
+dist
+build
+*.egg-info
+.git
+.gitignore
+.env
+.env.*
+*.log
+.DS_Store
+EOF
