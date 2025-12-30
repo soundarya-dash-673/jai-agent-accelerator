@@ -27,11 +27,9 @@ USER appuser
 # Add local bin to PATH for the non-root user
 ENV PATH="/home/appuser/.local/bin:${PATH}"
 
-# Expose the port Railway (or other PaaS) will set
-EXPOSE ${PORT:-8123}
+EXPOSE 8080
 
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-    CMD curl -f http://localhost:${PORT:-8123}/health || exit 1
+    CMD curl -f http://localhost:8080/health || exit 1
 
-# Use PORT env var in uvicorn command
-CMD ["sh", "-c", "python -m uvicorn src.pmm_agent.server:app --host 0.0.0.0 --port ${PORT:-8123}"]
+CMD ["python", "-m", "uvicorn", "src.pmm_agent.server:app", "--host", "0.0.0.0", "--port", "8080"]
