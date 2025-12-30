@@ -26,11 +26,12 @@ ALLOWED_ORIGINS = [
     "https://prismatic-buttercream-f3b7fd.netlify.app",
     "http://localhost:3000",
     "http://localhost:5173",
+    "https://railway.com"
 ]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],           # TEMP: debug only
+    allow_origins=ALLOWED_ORIGINS,           # TEMP: debug only
     allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
